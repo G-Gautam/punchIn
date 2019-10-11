@@ -82,9 +82,21 @@
   float: left;
   margin-left: 2%;
 }
+.rightIcon{
+  margin-top: 2%;
+  float: right;
+}
 
 .nav-header-container{
   height: 10%;
   width: 100%;
   display: inline-block;
+}
+
+.navSubTitle{
+  font-size: 15px;
+  font-weight: 100;
+  float: right;
+  margin-right: 2%;
+  margin-top: 2.5%;
 }
