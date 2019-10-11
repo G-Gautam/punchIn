@@ -8,11 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HomepageComponent } from './home/homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SideNavComponent
+    SideNavComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

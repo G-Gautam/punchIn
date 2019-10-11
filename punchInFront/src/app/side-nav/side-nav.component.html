@@ -83,17 +83,21 @@
       </div>
     </mat-nav-list>
   </mat-sidenav>
-  <a mat-button (click)=drawer.toggle()><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"
-    style=" fill:#000000;">
-    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
-      stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
-      font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-      <path d="M0,172v-172h172v172z" fill="none"></path>
-      <g fill="#ffffff">
-        <path
-          d="M0,14.33333v14.33333h172v-14.33333zM0,78.83333v14.33333h172v-14.33333zM0,143.33333v14.33333h172v-14.33333z">
-        </path>
-      </g>
-    </g>
-  </svg></a>
+  <div class=nav-header-container>
+    <a mat-button (click)=drawer.toggle() [ngClass] = "{'menuIcon':drawer.opened===false}"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="24" height="24" viewBox="0 0 172 172" style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+          stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+          font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+          <path d="M0,172v-172h172v172z" fill="none"></path>
+          <g fill="#ffffff">
+            <path
+              d="M0,14.33333v14.33333h172v-14.33333zM0,78.83333v14.33333h172v-14.33333zM0,143.33333v14.33333h172v-14.33333z">
+            </path>
+          </g>
+        </g>
+      </svg>
+    </a>
+    <h1 *ngIf=!drawer.opened class=navTitle>Punch In</h1>
+  </div>
 </mat-sidenav-container>

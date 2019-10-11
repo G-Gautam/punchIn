@@ -68,10 +68,23 @@
 .navTitle {
   color: white;
   font-size: 40px;
+  float: left;
 }
 
 .toggle{
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+
+.menuIcon{
+  margin-top: 2%;
+  float: left;
+  margin-left: 2%;
+}
+
+.nav-header-container{
+  height: 10%;
+  width: 100%;
+  display: inline-block;
 }
