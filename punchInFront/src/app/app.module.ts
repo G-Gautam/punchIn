@@ -9,12 +9,22 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HomepageComponent } from './home/homepage/homepage.component';
+import { HomeComponentDash } from './dashboard/home/home.component';
+import { HomeComponentEmp } from './employees/home/home.component';
+import { HomeComponentRep } from './reports/home/home.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { SideNavService } from './side-nav/side-nav.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SideNavComponent,
-    HomepageComponent
+    HomepageComponent,
+    HomeComponentDash,
+    HomeComponentRep,
+    HomeComponentEmp,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +38,7 @@ import { HomepageComponent } from './home/homepage/homepage.component';
     MatIconModule,
     LayoutModule
   ],
-  providers: [],
+  providers: [SideNavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
