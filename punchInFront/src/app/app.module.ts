@@ -45,7 +45,7 @@ import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angul
     MatDialogModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [SideNavService],
   bootstrap: [AppComponent],

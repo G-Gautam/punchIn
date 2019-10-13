@@ -3,4 +3,26 @@
     font-size: 5vw;
     text-align: left;
     margin: 2vw;
+    color: #DC493A;
+    margin-bottom: 4vw;
+}
+
+.textContainer{
+    margin-left: 2vw;
+    color: #DC493A;
+}
+
+.loginButton{
+    margin-left: 2vw;
+    background-color: #DC493A;
+    margin-top: 2vw;
+    float: left;
+    font-size: 1.5vw;
+    padding: 0px 20px 0px 20px;
+    color: white;
+    font-weight: 0;
+}
+
+.button-container{
+    width: 100%;
 }
