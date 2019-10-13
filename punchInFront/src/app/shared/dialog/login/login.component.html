@@ -1,0 +1,26 @@
+<h2 class=title mat-dialog-title>Login</h2>
+
+<mat-dialog-content [formGroup]=loginForm (ngSubmimt)='onSubmit(formGroup.value)'>
+    <div class=textContainer>
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput type=text formControlName=username placeholder="something@gmail.com" required>
+            <mat-error *ngIf="!username.valid && username.touched">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class=textContainer>
+        <mat-form-field [formGroup]="loginForm">
+            <mat-label>Password</mat-label>
+            <input matInput type=password formControlName=password required>
+            <mat-error *ngIf="(!password.valid && password.touched)">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Login</button>
+</mat-dialog-actions>

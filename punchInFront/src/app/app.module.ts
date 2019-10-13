@@ -5,16 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatDialog, MatDialogModule, MatFormFieldModule, MatInputModule } from  '@angular/material';
 import { SideNavComponent } from './side-nav/side-nav.component';
-import { LayoutModule } from '@angular/cdk/layout';
 import { HomepageComponent } from './home/homepage/homepage.component';
 import { HomeComponentDash } from './dashboard/home/home.component';
 import { HomeComponentEmp } from './employees/home/home.component';
 import { HomeComponentRep } from './reports/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SideNavService } from './side-nav/side-nav.service';
-
+import { LoginComponent } from './shared/dialog/login/login.component';
+import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,13 @@ import { SideNavService } from './side-nav/side-nav.service';
     HomeComponentDash,
     HomeComponentRep,
     HomeComponentEmp,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
+  ],
+
+  exports: [
+    FormsModule,
+    ReactiveFormsModule
   ],
   imports: [
     BrowserModule,
@@ -36,9 +42,13 @@ import { SideNavService } from './side-nav/side-nav.service';
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    LayoutModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [SideNavService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginComponent]
 })
 export class AppModule { }
