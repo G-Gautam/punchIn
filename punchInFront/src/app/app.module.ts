@@ -15,6 +15,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { SideNavService } from './side-nav/side-nav.service';
 import { LoginComponent } from './shared/dialog/login/login.component';
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from 'selenium-webdriver/http';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angul
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule
   ],
   providers: [SideNavService],
   bootstrap: [AppComponent],

@@ -12,18 +12,9 @@ import { MatDialogConfig } from '@angular/material/dialog';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private matDialog: MatDialog) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.openDialog();
-  }
+  ngOnInit(){
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.height = "50%";
-    dialogConfig.width = "50%";
-    dialogConfig.backdropClass = 'backdrop';
-    this.matDialog.open(LoginComponent, dialogConfig);
   }
 }
