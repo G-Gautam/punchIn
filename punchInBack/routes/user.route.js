@@ -9,7 +9,7 @@ const user_controller = require('../controllers/user.controller');
 module.exports = router;
 
 router.get('/allusers', user_controller.GetAll);
-// router.get('/user/test', product_controller.user_test);
+router.get('/user/:password/:username', user_controller.Get);
 // router.get('/user/test/disabled', product_controller.user_test_d);
 router.post('/user', user_controller.Add);
 // router.post('/create', product_controller.product_create);

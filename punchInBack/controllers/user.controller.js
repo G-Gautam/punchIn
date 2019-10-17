@@ -5,11 +5,11 @@ exports.GetAll = function(req, res){
         res.json(eachOne);
     })
 }
-// exports.user_test_d = function(req, res){
-//     User.find({'password': {$eq: 'disabled'}}).sort().then(eachOne=>{
-//         res.json(eachOne);
-//     })
-// }
+exports.Get = function(req, res){
+    userModel.find({'password': {$eq: req.params.password}, 'username': {$eq: req.params.username}}).sort().then(eachOne=>{
+        res.json(eachOne);
+    })
+}
 exports.Add = function (req, res) {
     let user = new userModel(
         {

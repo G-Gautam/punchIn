@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatDialog, MatDialogModule, MatFormFieldModule, MatInputModule } from  '@angular/material';
+import { MatToolbarModule, MatSnackBarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatDialog, MatDialogModule, MatFormFieldModule, MatInputModule, MatSnackBar } from  '@angular/material';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { HomepageComponent } from './home/homepage/homepage.component';
 import { HomeComponentDash } from './dashboard/home/home.component';
@@ -48,7 +48,8 @@ import { HttpClient } from 'selenium-webdriver/http';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [SideNavService],
   bootstrap: [AppComponent],

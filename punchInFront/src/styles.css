@@ -6,3 +6,13 @@ p,h1,h2,h3,h4,h5,h6 {color: black;}
 .backdrop{
     background: rgba(0,0,0,0.8);
 }
+
+.snackbar{
+    max-width: 80% !important;
+    color: #DC493A;
+}
+
+.mat-simple-snackbar > span {
+    text-align: center !important;
+    font-size: 20px !important;
+}

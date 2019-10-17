@@ -17,9 +17,9 @@ export class HeaderComponent implements OnInit {
   drawer: MatSidenav;
   ngOnInit() {
     this.drawer = this.sidenavService.getSideNav();
-    this.userService.isLoggedIn(false).subscribe((data: any) => {
-      console.log(data);
-    })
+    if(!this.userService.isLoggedIn()){
+      this.openDialog();
+    }
   }
 
   toggle(){

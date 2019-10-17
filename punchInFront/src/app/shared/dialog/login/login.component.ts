@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { MAT_MENU_SCROLL_STRATEGY } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
+import { UserService } from '../../serivce/user.service';
 
 
 @Component({
@@ -11,7 +13,7 @@ import { MAT_MENU_SCROLL_STRATEGY } from '@angular/material';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(public dialogRef: MatDialogRef<LoginComponent>, private formBuilder: FormBuilder) { }
+  constructor(public dialogRef: MatDialogRef<LoginComponent>, private snackBar: MatSnackBar, private formBuilder: FormBuilder, private userService: UserService) { }
 
   loginForm: FormGroup;
   titleAlert: string = "This field is required";
@@ -43,5 +45,24 @@ export class LoginComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  login() {
+    var username = this.loginForm.controls['username'].value;
+    var password = this.loginForm.controls['password'].value;
+    this.userService.login(username, password).subscribe((data: any) => {
+      if (data !== null && data.length !== 0) {
+        this.userService.setUser(data[0].username);
+        this.close();
+      }
+      else {
+        const config = new MatSnackBarConfig();
+        config.panelClass = ['snackbar'];
+        config.duration = 50000;
+        config.verticalPosition = 'top';
+        config.horizontalPosition = 'right';
+        this.snackBar.open('Invalid Credentials!', null, config);
+      }
+    });
   }
 }
