@@ -1,29 +1,37 @@
 const userModel = require('../models/user.model');
+const bcrypt = require('bcrypt');
 
-exports.GetAll = function(req, res){
-    userModel.find().sort().then(eachOne=>{
+exports.GetAll = function (req, res) {
+    userModel.find().sort().then(eachOne => {
         res.json(eachOne);
     })
 }
-exports.Get = function(req, res){
-    userModel.find({'password': {$eq: req.params.password}, 'username': {$eq: req.params.username}}).sort().then(eachOne=>{
-        res.json(eachOne);
+exports.Get = function (req, res) {
+    userModel.find({ 'username': { $eq: req.params.username } }).sort().then(eachOne => {
+        bcrypt.compare(req.params.password, eachOne.password, function (err, res) {
+            if (res) {
+                res.json(eachOne);
+            } else {
+                res.send(null);
+            }
+        })
     })
 }
 exports.Add = function (req, res) {
-    let user = new userModel(
-        {
-            username: req.body.username,
-            password: req.body.password
-        }
-    );
-
-    user.save(function (err) {
-        if (err) {
-            return next(err);
-        }
-        res.send(user)
-    })
+    bcrypt.hash(req.body.password, 10, function (err, hash) {
+        let user = new userModel(
+            {
+                username: req.body.username,
+                password: hash,
+                company: req.body.company
+            })
+        user.save(function (err) {
+            if (err) {
+                return next(err);
+            }
+            res.send(user)
+        })
+    });
 };
 
 // exports.product_create = function (req, res) {
