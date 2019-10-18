@@ -12,6 +12,10 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   isLoggedIn(){
+    if(localStorage.getItem('currentUser') !== null){
+      this.isUserLoggedIn = true;
+      this.username = localStorage.getItem('currentUser');
+    }
     return this.isUserLoggedIn;
     // var response = this.http.get('api/allusers');
     // return response;
@@ -23,6 +27,6 @@ export class UserService {
 
   setUser(username: string){
     this.isUserLoggedIn = true;
-    this.username = username;
+    localStorage.setItem('currentUser', JSON.stringify({ username: username }));
   }
 }

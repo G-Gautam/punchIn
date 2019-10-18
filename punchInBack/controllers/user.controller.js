@@ -9,7 +9,6 @@ exports.GetAll = function (req, res) {
 exports.Get = function (req, res) {
     userModel.find({ 'username': { $eq: req.params.username } }).sort().then(eachOne => {
         bcrypt.compare(req.params.password, eachOne[0].password, (err, result) => {
-            console.log(eachOne[0].password, req.params.password);
             if (result) {
                 res.json(eachOne);
             } else {
