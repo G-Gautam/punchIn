@@ -1,4 +1,5 @@
 const employeeModel = require('../models/employee.model');
+const userModel = require('../models/user.model');
 
 exports.GetAll = function (req, res) {
     employeeModel.find().sort().then(eachOne => {
@@ -17,12 +18,18 @@ exports.Add = function (req, res) {
             salary: req.body.salary,
             company: req.body.company
         })
-    console.log(employee);
-    employee.save(function (err) {
-        if (err) {
-            console.log(err);
-            return next(err);
+    userModel.find({ 'companyCode': { $eq: employee.company } }).sort().then(eachOne => {
+        if (eachOne.length !== 0) {
+            employee.save(function (err) {
+                if (err) {
+                    return next(err);
+                }
+                res.send(employee)
+            });
         }
-        res.send(employee)
-    });
+        else{
+            res.send("Company code not recognized");
+        }
+    })
+
 };
