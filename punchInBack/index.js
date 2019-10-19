@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // initialize our express app
 const user = require('./routes/user.route'); // Imports routes for the products
+const employee = require('./routes/employee.route');
 const server = express();
 
 // Set up mongoose connection
@@ -17,6 +18,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: false}));
 server.use('/', user);
+server.use('/employee', employee);
 
 let port = 8081;
 

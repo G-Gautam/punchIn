@@ -17,23 +17,15 @@ export class HeaderComponent implements OnInit {
   drawer: MatSidenav;
   ngOnInit() {
     this.drawer = this.sidenavService.getSideNav();
-    if(!this.userService.isLoggedIn()){
-      this.openDialog();
-    }
   }
 
   toggle(){
     this.sidenavService.toggle();
   }
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.height = "50%";
-    dialogConfig.width = "50%";
-    dialogConfig.backdropClass = 'backdrop';
-    this.matDialog.open(LoginComponent, dialogConfig);
+  clearLocalStorage(){
+    localStorage.clear();
+    window.location.reload();
   }
-
 
 }

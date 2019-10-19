@@ -8,25 +8,25 @@ export class UserService {
 
   isUserLoggedIn: boolean;
   username: string;
+  user: any;
 
   constructor(private http: HttpClient) { }
 
   isLoggedIn(){
     if(localStorage.getItem('currentUser') !== null){
       this.isUserLoggedIn = true;
-      this.username = localStorage.getItem('currentUser');
+      return true;
     }
-    return this.isUserLoggedIn;
-    // var response = this.http.get('api/allusers');
-    // return response;
+    return false;
   }
 
   login(username: string, password: string){
-    return this.http.get('api/user/'+ password + '/'+username);
+    let user = this.http.get('api/user/'+ password + '/'+username);
+    return user;
   }
 
-  setUser(username: string){
+  setUser(user: any){
     this.isUserLoggedIn = true;
-    localStorage.setItem('currentUser', JSON.stringify({ username: username }));
+    localStorage.setItem('currentUser', JSON.stringify(user));
   }
 }

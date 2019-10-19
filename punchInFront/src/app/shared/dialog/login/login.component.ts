@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   titleAlert: string = "This field is required";
+  user: any;
 
   ngOnInit() {
     this.createForm();
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   close() {
-    this.dialogRef.close();
+    this.dialogRef.close({data: this.user});
   }
 
   login() {
@@ -52,7 +53,8 @@ export class LoginComponent implements OnInit {
     var password = this.loginForm.controls['password'].value;
     this.userService.login(username, password).subscribe((data: any) => {
       if (data !== null && data.length !== 0) {
-        this.userService.setUser(data[0].username);
+        this.userService.setUser(data[0]);
+        this.user = data[0];
         this.close();
       }
       else {
