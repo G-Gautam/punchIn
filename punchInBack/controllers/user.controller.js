@@ -22,7 +22,8 @@ exports.Add = function (req, res) {
             {
                 username: req.body.username,
                 password: hash,
-                company: req.body.company
+                company: req.body.company,
+                companyCode: req.body.code
             })
         user.save(function (err) {
             if (err) {
