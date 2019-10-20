@@ -68,7 +68,9 @@
   .navTitle {
     color: white;
     font-size: 40px;
-    float: left;
+    text-align: left;
+    margin-left: 15vw;
+    position: relative;
   }
   
   .toggle{
@@ -78,9 +80,11 @@
   }
   
   .menuIcon{
-    margin-top: 2%;
-    float: left;
-    margin-left: 2%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
   }
   .rightIcon{
     margin-top: 2%;
@@ -92,10 +96,11 @@
     width: 100%;
     display: inline-block;
     background-color: black;
+    position: relative;
   }
   
   .navSubTitle{
-    font-size: 15px;
+    font-size: 100%;
     font-weight: 100;
     float: right;
     margin-right: 2%;
@@ -105,4 +110,8 @@
 
   .logout{
     margin-left: 2%;
+  }
+
+  .titleContainer{
+    width: 70%;
   }
