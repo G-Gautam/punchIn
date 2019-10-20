@@ -70,11 +70,6 @@
     bottom: 10px;
     right: 10px;
   }
-
-  .rightIcon{
-    margin-top: 2%;
-    float: right;
-  }
   
   .nav-header-container{
     height: 10%;
@@ -86,11 +81,6 @@
   }
   
   .navSubTitle{
-    font-size: 100%;
-    font-weight: 100;
-    float: right;
-    margin-right: 2%;
-    margin-top: 2.5%;
     color: white;
   }
 
@@ -99,12 +89,27 @@
   }
 
   .titleContainer{
-    width: 70vw;
     text-align: left;
     display: flex;
     flex-wrap: nowrap;
     height: 100%;
     align-items: center;
+    width: 70vw;
+  }
+
+  .subTitleContainer{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .subContainer{
+    justify-content: flex-end;
+    width: 30vw;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-right: 2vw;
   }
 
   .navTitle{
@@ -112,5 +117,9 @@
   }
 
   .menuIcon{
+    height: 100%;
+  }
+
+  .rightIcon{
     height: 100%;
   }

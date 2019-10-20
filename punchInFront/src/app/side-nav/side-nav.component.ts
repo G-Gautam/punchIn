@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, HostListener } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -12,7 +12,8 @@ import { SideNavService } from './side-nav.service';
 })
 export class SideNavComponent {
 
-  @ViewChild('drawer', {static: true}) sideNav: MatSidenav
+  @ViewChild('drawer', { static: true }) sideNav: MatSidenav
+  mobile: boolean;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -20,11 +21,28 @@ export class SideNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private sideNavService: SideNavService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private sideNavService: SideNavService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.sideNavService.setSidenav(this.sideNav);
-    console.log(this.sideNav);
+    this.mobile = false;
+    if (window.screen.width < 768) { // 768px portrait
+      this.mobile = true;
+    }
   }
 
+  logout() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if (event.target.innerWidth < 768) { // 768px portrait
+      this.mobile = true;
+    }
+    else{
+      this.mobile = false;
+    }
+  }
 }
