@@ -9,18 +9,12 @@
 
 .employeeList{
     position: relative;
-    max-height: 70vh;
+    max-height: 73vh;
     overflow: auto;
     width: 60%;
-    padding: 1vw;
 }
 
-.employeeList {
-    overflow-y: scroll;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE 10+ */
-}
-.employeeList::-webkit-scrollbar { /* WebKit */
-    width: 0;
-    height: 0;
+th{
+    font-size: 1.5vw;
+    color: #DC493A;
 }
