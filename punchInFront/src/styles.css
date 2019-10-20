@@ -16,3 +16,12 @@ p,h1,h2,h3,h4,h5,h6 {color: black;}
     text-align: center !important;
     font-size: 20px !important;
 }
+
+.container {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+.container::-webkit-scrollbar { 
+    display: none; 
+}

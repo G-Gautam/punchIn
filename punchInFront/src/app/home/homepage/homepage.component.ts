@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { LoginComponent } from 'src/app/shared/dialog/login/login.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { UserService } from 'src/app/shared/serivce/user.service';
 import { EmployeeService } from 'src/app/shared/serivce/employee.service';
+import { MatTable } from '@angular/material/table';
 
 
 @Component({
@@ -20,8 +21,13 @@ export class HomepageComponent implements OnInit {
   companyTitle: string;
   isUserLoggedIn: boolean;
   employeeList: any[];
+  displayedColumns: any[];
+
+  @ViewChild(MatTable, { static: false }) table: MatTable<any>;
+
 
   ngOnInit() {
+    this.employeeList = [];
     if (!this.userService.isLoggedIn()) {
       this.openDialog();
     }
@@ -37,6 +43,14 @@ export class HomepageComponent implements OnInit {
         this.companyTitle = this.user.company;
       }
     }
+
+    this.displayedColumns = ['Company', 'Name', 'Salary Rate'];
+  }
+
+  ngAfterViewInit() {
+    if (this.isUserLoggedIn) {
+      this.getAllEmployees();
+    }
   }
 
   openDialog() {
@@ -51,18 +65,19 @@ export class HomepageComponent implements OnInit {
         this.user = value.data;
         this.companyTitle = value.data.company;
         this.isUserLoggedIn = true;
+        this.getAllEmployees();
       }
     });
-
-    if(this.isUserLoggedIn){
-      this.getAllEmployees();
-    }
   }
 
   getAllEmployees() {
     this.employeeService.getEmployees().subscribe((data: any) => {
-      this.employeeList = data;
-      console.log(data);
+      data.forEach(element => {
+        let salary = element.salary.toFixed(2);
+        element.salary = salary;
+        this.employeeList.push(element);
+        this.table.renderRows();
+      });
     })
   }
 }
