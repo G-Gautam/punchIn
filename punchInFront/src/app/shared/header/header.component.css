@@ -65,27 +65,12 @@
     margin-left: 20px;
   }
   
-  .navTitle {
-    color: white;
-    font-size: 40px;
-    text-align: left;
-    margin-left: 15vw;
-    position: relative;
-  }
-  
   .toggle{
     position: absolute;
     bottom: 10px;
     right: 10px;
   }
-  
-  .menuIcon{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
+
   .rightIcon{
     margin-top: 2%;
     float: right;
@@ -94,7 +79,8 @@
   .nav-header-container{
     height: 10%;
     width: 100%;
-    display: inline-block;
+    display: flex;
+    flex-wrap: nowrap;
     background-color: black;
     position: relative;
   }
@@ -113,5 +99,18 @@
   }
 
   .titleContainer{
-    width: 70%;
+    width: 70vw;
+    text-align: left;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+    align-items: center;
+  }
+
+  .navTitle{
+    color: white;
+  }
+
+  .menuIcon{
+    height: 100%;
   }

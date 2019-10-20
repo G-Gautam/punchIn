@@ -1,6 +1,5 @@
 <div class=nav-header-container>
     <div class=titleContainer>
-        <h1 *ngIf=!drawer.opened class=navTitle [routerLink]="['']"> Punch In</h1>
         <a mat-button (click)=toggle() [ngClass]="{'menuIcon':drawer.opened===false}"><svg
                 xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24px" height="10%" viewBox="0 0 172 172"
                 style=" fill:#000000;">
@@ -17,6 +16,7 @@
                 </g>
             </svg>
         </a>
+        <h1 *ngIf=!drawer.opened class=navTitle [routerLink]="['']"> Punch In</h1>
     </div>
     <!-- 
 
