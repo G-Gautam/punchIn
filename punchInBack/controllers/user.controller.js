@@ -12,6 +12,9 @@ exports.Get = function (req, res) {
             if (result) {
                 res.json(eachOne);
             } else {
+                return res.status(400).send({
+                    message: 'This is an error!'
+                });
             }
         })
     })

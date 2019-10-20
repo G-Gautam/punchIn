@@ -24,6 +24,6 @@
 
 <mat-dialog-actions>
     <div class=button-container>
-        <button mat-button class=loginButton (click)="login()">Login</button>
+        <button [disabled]="loginForm.invalid" mat-button class=loginButton (click)="login()">Login</button>
     </div>
 </mat-dialog-actions>

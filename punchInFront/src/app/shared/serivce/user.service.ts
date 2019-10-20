@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +23,9 @@ export class UserService {
   }
 
   login(username: string, password: string){
-    let user = this.http.get('api/user/'+ password + '/'+username);
-    return user;
+    return this.http.get('api/user/'+ password + '/'+username).pipe(
+      catchError(e => throwError(e))
+      );
   }
 
   setUser(user: any){
