@@ -42,6 +42,5 @@ export class HeaderComponent implements OnInit {
     else{
       this.mobile = false;
     }
-    console.log(event.target.innerWidth);
   }
 }

@@ -15,6 +15,13 @@
 }
 
 th{
-    font-size: 1.5vw;
+    font-size: 16px;
     color: #DC493A;
+}
+
+.employeeListMobile{
+    position: relative;
+    max-height: 73vh;
+    overflow: auto;
+    width: 100%;
 }

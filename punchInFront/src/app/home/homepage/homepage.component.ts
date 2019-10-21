@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { LoginComponent } from 'src/app/shared/dialog/login/login.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,6 +22,7 @@ export class HomepageComponent implements OnInit {
   isUserLoggedIn: boolean;
   employeeList: any[];
   displayedColumns: any[];
+  mobile: boolean;
 
   @ViewChild(MatTable, { static: false }) table: MatTable<any>;
 
@@ -42,6 +43,10 @@ export class HomepageComponent implements OnInit {
         this.isUserLoggedIn = true;
         this.companyTitle = this.user.company;
       }
+    }
+    this.mobile = false;
+    if (window.screen.width < 768) { // 768px portrait
+      this.mobile = true;
     }
 
     this.displayedColumns = ['Company', 'Name', 'Salary Rate'];
@@ -68,6 +73,16 @@ export class HomepageComponent implements OnInit {
         this.getAllEmployees();
       }
     });
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if (event.target.innerWidth < 768) { // 768px portrait
+      this.mobile = true;
+    } 
+    else{
+      this.mobile = false;
+    }
   }
 
   getAllEmployees() {

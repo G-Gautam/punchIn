@@ -4,7 +4,7 @@
         <div class=title>
             <h1>{{companyTitle}} Employee Management Portal</h1>
         </div>
-        <div class=employeeList>
+        <div [ngClass]="{'employeeListMobile': mobile, 'employeeList': !mobile}">
             <table mat-table class="empList mat-elevation-z8" id=empList [dataSource]="employeeList">
                 <ng-container class=tableCol matColumnDef="Company">
                     <th mat-header-cell *matHeaderCellDef>No.</th>
