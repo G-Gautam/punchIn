@@ -1,16 +1,26 @@
 .container{
     margin-left: 2vw;
     margin-right: 2vw;
-    margin-bottom: 2vw;
+    display: flex;
+    flex-wrap: wrap;
 }
 .empList {
     width: 100%;
 }
 
+.title{
+    margin-left: 2vw;
+}
+
+.titleText{
+    font-weight: lighter;
+}
+
 .employeeList{
     position: relative;
-    max-height: 73vh;
+    height: 73vh;
     overflow: auto;
+    background-color: white;
     width: 60%;
 }
 
@@ -21,7 +31,51 @@ th{
 
 .employeeListMobile{
     position: relative;
-    max-height: 73vh;
+    height: 73vh;
     overflow: auto;
+    background-color: white;
     width: 100%;
+}
+
+.subContainer{
+    width: 36%;
+    margin-left: 2vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.subContainerMobile{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sideBox{
+    width: 100%;
+    margin-bottom: 2vw;
+    background-color: white;
+}
+
+.sideBoxMobile{
+    width: 100%;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    background-color: white;
+}
+
+.homepage{
+    background-color: #f7f7f7;
+    padding-bottom :1vw;
+}
+
+.subTitle{
+    font-weight: lighter;
+    margin-top: 1.5vw;
+    margin-left: 1vw;
+    color: #DC493A;
+}
+
+.subText{
+    margin-left: 2vw;
+    font-size: 40px;
 }

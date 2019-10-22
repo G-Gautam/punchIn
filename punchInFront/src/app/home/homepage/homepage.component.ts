@@ -86,7 +86,7 @@ export class HomepageComponent implements OnInit {
   }
 
   getAllEmployees() {
-    this.employeeService.getEmployees().subscribe((data: any) => {
+    this.employeeService.getEmployees(this.user.companyCode).subscribe((data: any) => {
       data.forEach(element => {
         let salary = element.salary.toFixed(2);
         element.salary = salary;

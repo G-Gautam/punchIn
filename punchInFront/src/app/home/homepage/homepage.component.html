@@ -1,11 +1,11 @@
 <div class=homepage>
     <app-header></app-header>
+    <div class=title>
+        <h1 class=titleText>{{companyTitle}} Employee Management Portal</h1>
+    </div>
     <div *ngIf=isUserLoggedIn class=container>
-        <div class=title>
-            <h1>{{companyTitle}} Employee Management Portal</h1>
-        </div>
-        <div [ngClass]="{'employeeListMobile': mobile, 'employeeList': !mobile}">
-            <table mat-table class="empList mat-elevation-z8" id=empList [dataSource]="employeeList">
+        <div [ngClass]="{'employeeListMobile': mobile, 'employeeList': !mobile, 'mat-elevation-z8': true}">
+            <table mat-table class="empList" id=empList [dataSource]="employeeList">
                 <ng-container class=tableCol matColumnDef="Company">
                     <th mat-header-cell *matHeaderCellDef>No.</th>
                     <td mat-cell *matCellDef="let emp; index as i">{{i+1}}</td>
@@ -26,6 +26,15 @@
 
                 <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
             </table>
+        </div>
+        <div [ngClass]="{'subContainerMobile': mobile, 'subContainer': !mobile}">
+            <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}">
+                <h2 class=subTitle>Company Code</h2>
+                <h3 class="companyCode subText">{{user.companyCode}}</h3>
+            </div>
+            <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}">
+                <h2 class=subTitle>Add An Employee</h2>
+            </div>
         </div>
     </div>
 </div>

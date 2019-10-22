@@ -13,7 +13,7 @@ export class EmployeeService {
   }
 
   
-  getEmployees(){
-    return this.httpClient.get(this.url + '/allemployees');
+  getEmployees(code: string){
+    return this.httpClient.get(this.url + '/'+ code);
   }
 }
