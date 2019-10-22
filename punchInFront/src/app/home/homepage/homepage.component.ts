@@ -49,7 +49,7 @@ export class HomepageComponent implements OnInit {
       this.mobile = true;
     }
 
-    this.displayedColumns = ['Company', 'Name', 'Salary Rate'];
+    this.displayedColumns = ['Company', 'Name', 'Salary Rate', 'Actions'];
   }
 
   ngAfterViewInit() {

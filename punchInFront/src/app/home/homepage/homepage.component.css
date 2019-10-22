@@ -52,7 +52,6 @@ th{
 
 .sideBox{
     width: 100%;
-    margin-bottom: 2vw;
     background-color: white;
 }
 
@@ -78,4 +77,8 @@ th{
 .subText{
     margin-left: 2vw;
     font-size: 40px;
+}
+
+#companyCodeBox{
+    margin-bottom: 2vw;
 }

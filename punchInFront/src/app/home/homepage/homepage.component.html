@@ -14,11 +14,15 @@
                 <ng-container class=tableCol matColumnDef="Name">
                     <th mat-header-cell *matHeaderCellDef>Name</th>
                     <td mat-cell class="name-cell" *matCellDef="let emp; index as i">{{emp.name}}</td>
-
                 </ng-container>
 
                 <ng-container class=tableCol matColumnDef="Salary Rate">
                     <th mat-header-cell *matHeaderCellDef>Salary Rate</th>
+                    <td mat-cell class="Salary Rate-cell" *matCellDef="let emp; index as i">${{emp.salary}}</td>
+                </ng-container>
+
+                <ng-container class=tableCol matColumnDef="Actions">
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
                     <td mat-cell class="Salary Rate-cell" *matCellDef="let emp; index as i">${{emp.salary}}</td>
                 </ng-container>
 
@@ -28,11 +32,11 @@
             </table>
         </div>
         <div [ngClass]="{'subContainerMobile': mobile, 'subContainer': !mobile}">
-            <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}">
+            <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}" id = companyCodeBox>
                 <h2 class=subTitle>Company Code</h2>
                 <h3 class="companyCode subText">{{user.companyCode}}</h3>
             </div>
-            <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}">
+            <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}" id = addEmployeeBox>
                 <h2 class=subTitle>Add An Employee</h2>
             </div>
         </div>
