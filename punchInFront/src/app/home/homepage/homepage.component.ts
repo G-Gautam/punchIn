@@ -74,21 +74,21 @@ export class HomepageComponent implements OnInit {
       }
     });
   }
-  
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     if (event.target.innerWidth < 768) { // 768px portrait
       this.mobile = true;
-    } 
-    else{
+    }
+    else {
       this.mobile = false;
     }
   }
 
   getAllEmployees(event: boolean) {
-    this.employeeList = [];
-    this.table.renderRows();
     this.employeeService.getEmployees(this.user.companyCode).subscribe((data: any) => {
+      this.employeeList = [];
+      this.table.renderRows();
       data.forEach(element => {
         let salary = element.salary.toFixed(2);
         element.salary = salary;
