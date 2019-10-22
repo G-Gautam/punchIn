@@ -1,0 +1,24 @@
+ 
+  .fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+  
+  .container {
+    padding: 2vw;;
+  }
+  
+  .form {
+    width: 100%;
+  }
+  
+  .form-element {
+    width: 100%;
+  }
+  
+  .button {
+    width: 100%;
+    background-color: #DC493A;
+    color: white;
+  }

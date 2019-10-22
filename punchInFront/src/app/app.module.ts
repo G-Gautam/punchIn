@@ -16,6 +16,7 @@ import { SideNavService } from './side-nav/side-nav.service';
 import { LoginComponent } from './shared/dialog/login/login.component';
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from 'selenium-webdriver/http';
+import { AddEmployeeFormComponent } from './home/forms/add-employee-form/add-employee-form.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HttpClient } from 'selenium-webdriver/http';
     HomeComponentRep,
     HomeComponentEmp,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    AddEmployeeFormComponent
   ],
 
   exports: [
