@@ -54,7 +54,7 @@ export class HomepageComponent implements OnInit {
 
   ngAfterViewInit() {
     if (this.isUserLoggedIn) {
-      this.getAllEmployees();
+      this.getAllEmployees(true);
     }
   }
 
@@ -70,7 +70,7 @@ export class HomepageComponent implements OnInit {
         this.user = value.data;
         this.companyTitle = value.data.company;
         this.isUserLoggedIn = true;
-        this.getAllEmployees();
+        this.getAllEmployees(true);
       }
     });
   }
@@ -85,7 +85,9 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  getAllEmployees() {
+  getAllEmployees(event: boolean) {
+    this.employeeList = [];
+    this.table.renderRows();
     this.employeeService.getEmployees(this.user.companyCode).subscribe((data: any) => {
       data.forEach(element => {
         let salary = element.salary.toFixed(2);

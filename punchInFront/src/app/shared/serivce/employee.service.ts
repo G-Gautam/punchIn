@@ -16,4 +16,13 @@ export class EmployeeService {
   getEmployees(code: string){
     return this.httpClient.get(this.url + '/'+ code);
   }
+
+  addEmployee(name: string, salary: string, company: string){
+    let body = {
+      name: name,
+      salary: salary, 
+      company: company
+    }
+    return this.httpClient.post<any>(this.url + '/employee', body);
+  }
 }

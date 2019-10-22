@@ -38,7 +38,7 @@
             </div>
             <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}" id = addEmployeeBox>
                 <h2 class=subTitle>Add An Employee</h2>
-                <app-add-employee-form></app-add-employee-form>
+                <app-add-employee-form (added)=getAllEmployees($event)></app-add-employee-form>
             </div>
         </div>
     </div>

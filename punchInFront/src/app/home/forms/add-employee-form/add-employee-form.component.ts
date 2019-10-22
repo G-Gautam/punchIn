@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
+import { EmployeeService } from 'src/app/shared/serivce/employee.service';
+import { UserService } from 'src/app/shared/serivce/user.service';
+import { MatSnackBarConfig, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-add-employee-form',
@@ -10,8 +13,9 @@ export class AddEmployeeFormComponent implements OnInit {
 
   formGroup: FormGroup;
   titleAlert: string = 'This field is required';
-  
-  constructor(private formBuilder: FormBuilder) { }
+  @Output() added = new EventEmitter<boolean>();
+
+  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private employeeService: EmployeeService) { }
 
   ngOnInit() {
     this.createForm();
@@ -42,8 +46,23 @@ export class AddEmployeeFormComponent implements OnInit {
     return this.formGroup.get('name') as FormControl
   }
 
-  onSubmit(){
-    console.log("HA");
+  onSubmit() {
+    let userobj = localStorage.getItem('currentUser');
+    let company = JSON.parse(userobj).companyCode;
+    this.employeeService.addEmployee(this.formGroup.controls['name'].value, this.formGroup.controls['salary'].value, company)
+      .subscribe(
+        response => {
+          this.added.emit(true);
+        },
+        err => {
+          const config = new MatSnackBarConfig();
+          config.panelClass = ['snackbar'];
+          config.duration = 4000;
+          config.verticalPosition = 'top';
+          config.horizontalPosition = 'right';
+          this.snackBar.open('Operation Unsuccessful', null, config);
+        }
+      );
   }
 
 }

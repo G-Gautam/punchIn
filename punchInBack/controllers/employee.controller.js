@@ -12,12 +12,12 @@ exports.Get = function (req, res) {
     })
 }
 exports.GetByCode = function (req, res) {
-    console.log(req.params.code);
     employeeModel.find({ 'company': { $eq: req.params.code } }).sort().then(eachOne => {
         res.json(eachOne);
     })
 }
 exports.Add = function (req, res) {
+    console.log("P");
     let employee = new employeeModel(
         {
             name: req.body.name,
