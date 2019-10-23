@@ -47,3 +47,10 @@ exports.Delete = function (req, res) {
         res.send(result);
     })
 }
+
+exports.Update = function(req, res) {
+    employeeModel.findByIdAndUpdate(req.params.id, { $set: { 'name': req.body.name, 'salary': req.body.salary}}, (err, result)=>{
+        if (err) return next(err);
+        res.send(result);    
+    })
+}
