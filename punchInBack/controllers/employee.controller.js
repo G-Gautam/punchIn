@@ -17,7 +17,6 @@ exports.GetByCode = function (req, res) {
     })
 }
 exports.Add = function (req, res) {
-    console.log("P");
     let employee = new employeeModel(
         {
             name: req.body.name,
@@ -33,9 +32,18 @@ exports.Add = function (req, res) {
                 res.send(employee)
             });
         }
-        else{
+        else {
             res.send("Company code not recognized");
         }
     })
 
 };
+
+exports.Delete = function (req, res) {
+    employeeModel.deleteOne({ '_id': req.params.id }, (err, result) => {
+        if (err) {
+            res.send(err);
+        }
+        res.send(result);
+    })
+}

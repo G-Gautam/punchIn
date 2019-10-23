@@ -25,4 +25,8 @@ export class EmployeeService {
     }
     return this.httpClient.post<any>(this.url + '/employee', body);
   }
+
+  removeEmployee(id: string){
+    return this.httpClient.delete(this.url + '/empDel/' + id);
+  }
 }

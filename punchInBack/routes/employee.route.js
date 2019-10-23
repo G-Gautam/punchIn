@@ -14,4 +14,4 @@ router.get('/:code', employee_controller.GetByCode);
 // router.post('/create', product_controller.product_create);
 // router.get('/:id', product_controller.product_details);
 // router.put('/:id', product_controller.product_update);
-// router.delete('/:id', product_controller.product_delete);
+router.delete('/empDel/:id', employee_controller.Delete);

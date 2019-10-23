@@ -6,6 +6,7 @@ import { MatDialogConfig } from '@angular/material/dialog';
 import { UserService } from 'src/app/shared/serivce/user.service';
 import { EmployeeService } from 'src/app/shared/serivce/employee.service';
 import { MatTable } from '@angular/material/table';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { MatTable } from '@angular/material/table';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private userService: UserService, private matDialog: MatDialog, private employeeService: EmployeeService) { }
+  constructor(private userService: UserService, private matDialog: MatDialog, private employeeService: EmployeeService, private snackBar: MatSnackBar) { }
 
   user: any;
   companyTitle: string;
@@ -105,5 +106,19 @@ export class HomepageComponent implements OnInit {
 
   dummy(event){
     console.log(event);
+  }
+
+  remove(employee){
+    this.employeeService.removeEmployee(employee._id).subscribe((data: any) => {
+      this.employeeList = [];
+      this.table.renderRows();
+      this.getAllEmployees(true);
+      const config = new MatSnackBarConfig();
+      config.panelClass = ['snackbar'];
+      config.duration = 4000;
+      config.verticalPosition = 'top';
+      config.horizontalPosition = 'right';
+      this.snackBar.open('Employee ' + employee.name + ' delete successfully', null, config);
+    })
   }
 }
