@@ -82,3 +82,27 @@ th{
 #companyCodeBox{
     margin-bottom: 2vw;
 }
+
+.editButton, .deleteButton, .detailButton{
+    margin: 8px;
+    width: 24px;
+    height: 24px;
+}
+
+.detailButton{
+    background-color: green;
+}
+
+mat-icon{
+    font-size: 16px;
+    margin-top: -8px;
+}
+
+.mat-row:hover {
+    background-color: #f1f1f1;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-wrap: nowrap;
+}

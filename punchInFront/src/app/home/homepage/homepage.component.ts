@@ -62,7 +62,12 @@ export class HomepageComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.height = "50%";
-    dialogConfig.width = "50%";
+    if (window.screen.width < 768) {
+      dialogConfig.width = "100%";
+    }
+    else{
+      dialogConfig.width = "50%";
+    }
     dialogConfig.backdropClass = 'backdrop';
     let dialogRef = this.matDialog.open(LoginComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(value => {
@@ -96,5 +101,9 @@ export class HomepageComponent implements OnInit {
         this.table.renderRows();
       });
     })
+  }
+
+  dummy(event){
+    console.log(event);
   }
 }

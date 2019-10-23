@@ -23,7 +23,19 @@
 
                 <ng-container class=tableCol matColumnDef="Actions">
                     <th mat-header-cell *matHeaderCellDef>Actions</th>
-                    <td mat-cell class="Salary Rate-cell" *matCellDef="let emp; index as i">${{emp.salary}}</td>
+                    <td mat-cell class="Salary Rate-cell" *matCellDef="let emp; index as i">
+                        <div class=buttonContainer>
+                            <button mat-mini-fab (click)=dummy(emp) class="detailButton" id={{i}}>
+                                <mat-icon>details</mat-icon>
+                            </button>
+                            <button color=primary mat-mini-fab (click)=dummy(emp) class="editButton" id={{i}}>
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button color=warn mat-mini-fab (click)=dummy(emp) class="deleteButton" id={{i}}>
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
@@ -32,11 +44,11 @@
             </table>
         </div>
         <div [ngClass]="{'subContainerMobile': mobile, 'subContainer': !mobile}">
-            <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}" id = companyCodeBox>
+            <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}" id=companyCodeBox>
                 <h2 class=subTitle>Company Code</h2>
                 <h3 class="companyCode subText">{{user.companyCode}}</h3>
             </div>
-            <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}" id = addEmployeeBox>
+            <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}" id=addEmployeeBox>
                 <h2 class=subTitle>Add An Employee</h2>
                 <app-add-employee-form (added)=getAllEmployees($event)></app-add-employee-form>
             </div>
