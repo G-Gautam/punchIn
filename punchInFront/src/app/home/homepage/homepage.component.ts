@@ -119,7 +119,7 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  getAllEmployees(event: boolean) {
+  getAllEmployees(event) {
     this.employeeService.getEmployees(this.user.companyCode).subscribe((data: any) => {
       this.employeeList = [];
       this.table.renderRows();

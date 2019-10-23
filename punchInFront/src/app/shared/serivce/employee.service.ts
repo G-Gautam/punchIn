@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { empty } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,13 @@ export class EmployeeService {
 
   removeEmployee(id: string){
     return this.httpClient.delete(this.url + '/empDel/' + id);
+  }
+
+  updateEmployee(emp: any){
+    let body = {
+      name: emp.name,
+      salary: emp.salary
+    }
+    return this.httpClient.put(this.url + '/' + emp._id, body);
   }
 }

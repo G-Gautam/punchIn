@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA, MatSnackBarConfig } from '@angular/material';
 import { EmployeeService } from 'src/app/shared/serivce/employee.service';
 
 @Component({
@@ -24,8 +24,29 @@ export class AddEditEmployeeDialogComponent implements OnInit {
     
   }
 
-  editEmployee(dum){
-    console.log("AH")
+  editEmployee(emp){
+    let employee = this.employee.employee;
+    employee.salary = emp.controls['salary'].value;
+    employee.name = emp.controls['name'].value;
+    this.employeeService.updateEmployee(employee).subscribe(
+      result => {
+        const config = new MatSnackBarConfig();
+        config.panelClass = ['snackbar'];
+        config.duration = 4000;
+        config.verticalPosition = 'top';
+        config.horizontalPosition = 'right';
+        this.snackBar.open('Employee ' + this.name + ' edited successfully', null, config);
+        this.cancel();
+      },
+      err =>{
+        const config = new MatSnackBarConfig();
+        config.panelClass = ['snackbar'];
+        config.duration = 4000;
+        config.verticalPosition = 'top';
+        config.horizontalPosition = 'right';
+        this.snackBar.open('Unsuccessful Operation', null, config);
+      }
+    );
   }
   cancel(){
     this.dialogRef.close();

@@ -13,7 +13,7 @@ export class AddEmployeeFormComponent implements OnInit {
 
   formGroup: FormGroup;
   titleAlert: string = 'This field is required';
-  @Output() added = new EventEmitter<boolean>();
+  @Output() added = new EventEmitter<any>();
   @Input() editName: string;
   @Input() editSalary: string;
 
@@ -54,7 +54,7 @@ export class AddEmployeeFormComponent implements OnInit {
     this.employeeService.addEmployee(this.formGroup.controls['name'].value, this.formGroup.controls['salary'].value, company)
       .subscribe(
         response => {
-          this.added.emit(true);
+          this.added.emit(this.formGroup);
         },
         err => {
           const config = new MatSnackBarConfig();
