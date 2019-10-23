@@ -17,6 +17,7 @@ import { LoginComponent } from './shared/dialog/login/login.component';
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from 'selenium-webdriver/http';
 import { AddEmployeeFormComponent } from './home/forms/add-employee-form/add-employee-form.component';
+import { AddEditEmployeeDialogComponent } from './home/dialogs/add-edit-employee-dialog/add-edit-employee-dialog.component';
 
 
 @NgModule({
@@ -29,12 +30,14 @@ import { AddEmployeeFormComponent } from './home/forms/add-employee-form/add-emp
     HomeComponentEmp,
     HeaderComponent,
     LoginComponent,
-    AddEmployeeFormComponent
+    AddEmployeeFormComponent,
+    AddEditEmployeeDialogComponent
   ],
 
   exports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AddEditEmployeeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,6 @@ import { AddEmployeeFormComponent } from './home/forms/add-employee-form/add-emp
   ],
   providers: [SideNavService],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent]
+  entryComponents: [LoginComponent, AddEditEmployeeDialogComponent]
 })
 export class AppModule { }

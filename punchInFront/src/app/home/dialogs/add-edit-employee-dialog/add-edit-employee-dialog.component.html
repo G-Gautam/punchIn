@@ -1,0 +1,7 @@
+<h2 class=title mat-dialog-title>Edit Employee</h2>
+<mat-dialog-content>
+    <app-add-employee-form (added)=editEmployee($event) [editName]=name [editSalary]=salary></app-add-employee-form>
+    <div class="buttonContainer">
+        <button mat-raised-button (click)=cancel() class="button">Cancel</button>
+    </div>
+</mat-dialog-content>

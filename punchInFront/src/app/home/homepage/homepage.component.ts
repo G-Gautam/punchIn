@@ -7,6 +7,9 @@ import { UserService } from 'src/app/shared/serivce/user.service';
 import { EmployeeService } from 'src/app/shared/serivce/employee.service';
 import { MatTable } from '@angular/material/table';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { format } from 'path';
+import { AddEmployeeFormComponent } from '../forms/add-employee-form/add-employee-form.component';
+import { AddEditEmployeeDialogComponent } from '../dialogs/add-edit-employee-dialog/add-edit-employee-dialog.component';
 
 
 @Component({
@@ -60,7 +63,7 @@ export class HomepageComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogConfig = new MatDialogConfig();
+    var dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.height = "50%";
     if (window.screen.width < 768) {
@@ -71,6 +74,31 @@ export class HomepageComponent implements OnInit {
     }
     dialogConfig.backdropClass = 'backdrop';
     let dialogRef = this.matDialog.open(LoginComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(value => {
+      if (value.data !== null) {
+        this.user = value.data;
+        this.companyTitle = value.data.company;
+        this.isUserLoggedIn = true;
+        this.getAllEmployees(true);
+      }
+    });
+  }
+
+  editEmployee(employee){
+    var dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.height = "50%";
+    if (window.screen.width < 768) {
+      dialogConfig.width = "100%";
+    }
+    else{
+      dialogConfig.width = "50%";
+    }
+    dialogConfig.backdropClass = 'backdrop';
+    dialogConfig.data = {
+      'employee': employee
+    }
+    let dialogRef = this.matDialog.open(AddEditEmployeeDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(value => {
       if (value.data !== null) {
         this.user = value.data;

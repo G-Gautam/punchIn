@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import { EmployeeService } from 'src/app/shared/serivce/employee.service';
 import { UserService } from 'src/app/shared/serivce/user.service';
@@ -14,6 +14,8 @@ export class AddEmployeeFormComponent implements OnInit {
   formGroup: FormGroup;
   titleAlert: string = 'This field is required';
   @Output() added = new EventEmitter<boolean>();
+  @Input() editName: string;
+  @Input() editSalary: string;
 
   constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private employeeService: EmployeeService) { }
 
@@ -23,8 +25,8 @@ export class AddEmployeeFormComponent implements OnInit {
 
   createForm() {
     this.formGroup = this.formBuilder.group({
-      'name': new FormControl(null, [Validators.required]),
-      'salary': new FormControl(null, [Validators.required]),
+      'name': new FormControl(this.editName, [Validators.required]),
+      'salary': new FormControl(this.editSalary, [Validators.required]),
     });
   }
 
