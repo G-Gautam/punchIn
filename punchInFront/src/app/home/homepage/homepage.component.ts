@@ -109,16 +109,21 @@ export class HomepageComponent implements OnInit {
   }
 
   remove(employee){
-    this.employeeService.removeEmployee(employee._id).subscribe((data: any) => {
-      this.employeeList = [];
-      this.table.renderRows();
-      this.getAllEmployees(true);
-      const config = new MatSnackBarConfig();
-      config.panelClass = ['snackbar'];
-      config.duration = 4000;
-      config.verticalPosition = 'top';
-      config.horizontalPosition = 'right';
-      this.snackBar.open('Employee ' + employee.name + ' delete successfully', null, config);
-    })
+    if(confirm("Are you sure you want to delete " + employee.name)){
+      this.employeeService.removeEmployee(employee._id).subscribe((data: any) => {
+        this.employeeList = [];
+        this.table.renderRows();
+        this.getAllEmployees(true);
+        const config = new MatSnackBarConfig();
+        config.panelClass = ['snackbar'];
+        config.duration = 4000;
+        config.verticalPosition = 'top';
+        config.horizontalPosition = 'right';
+        this.snackBar.open('Employee ' + employee.name + ' delete successfully', null, config);
+      })
+    }
+    else{
+      return;
+    }
   }
 }
