@@ -147,7 +147,7 @@ export class HomepageComponent implements OnInit {
         config.duration = 4000;
         config.verticalPosition = 'top';
         config.horizontalPosition = 'right';
-        this.snackBar.open('Employee ' + employee.name + ' delete successfully', null, config);
+        this.snackBar.open('Employee ' + employee.name + ' deleted successfully', null, config);
       })
     }
     else{

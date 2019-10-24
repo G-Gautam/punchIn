@@ -16,10 +16,16 @@ export class AddEmployeeFormComponent implements OnInit {
   @Output() added = new EventEmitter<any>();
   @Input() editName: string;
   @Input() editSalary: string;
-
+  isEdit: boolean;
   constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private employeeService: EmployeeService) { }
 
   ngOnInit() {
+    if(this.editName !== undefined){
+      this.isEdit = true;
+    }
+    else{
+      this.isEdit = false;
+    }
     this.createForm();
   }
 
@@ -49,12 +55,19 @@ export class AddEmployeeFormComponent implements OnInit {
   }
 
   onSubmit() {
+    if(this.isEdit == false){
     let userobj = localStorage.getItem('currentUser');
     let company = JSON.parse(userobj).companyCode;
     this.employeeService.addEmployee(this.formGroup.controls['name'].value, this.formGroup.controls['salary'].value, company)
       .subscribe(
         response => {
           this.added.emit(this.formGroup);
+          const config = new MatSnackBarConfig();
+          config.panelClass = ['snackbar'];
+          config.duration = 4000;
+          config.verticalPosition = 'top';
+          config.horizontalPosition = 'right';
+          this.snackBar.open('Employee ' + this.formGroup.controls['name'].value + ' added successfully', null, config);
         },
         err => {
           const config = new MatSnackBarConfig();
@@ -65,6 +78,9 @@ export class AddEmployeeFormComponent implements OnInit {
           this.snackBar.open('Operation Unsuccessful', null, config);
         }
       );
+    }
+    else{
+      this.added.emit(this.formGroup);
+    }
   }
-
 }

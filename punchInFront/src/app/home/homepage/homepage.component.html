@@ -43,6 +43,8 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
             </table>
         </div>
+
+        
         <div [ngClass]="{'subContainerMobile': mobile, 'subContainer': !mobile}">
             <div [ngClass]="{'sideBoxMobile': mobile, 'sideBox': !mobile, 'mat-elevation-z8': true}" id=companyCodeBox>
                 <h2 class=subTitle>Company Code</h2>
