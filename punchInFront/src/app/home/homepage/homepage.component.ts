@@ -7,15 +7,22 @@ import { UserService } from 'src/app/shared/serivce/user.service';
 import { EmployeeService } from 'src/app/shared/serivce/employee.service';
 import { MatTable } from '@angular/material/table';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
-import { format } from 'path';
 import { AddEmployeeFormComponent } from '../forms/add-employee-form/add-employee-form.component';
 import { AddEditEmployeeDialogComponent } from '../dialogs/add-edit-employee-dialog/add-edit-employee-dialog.component';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 @Component({
   selector: 'homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['./homepage.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
+      state('expanded', style({ height: '*', visibility: 'visible' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ]
 })
 export class HomepageComponent implements OnInit {
 
@@ -27,6 +34,9 @@ export class HomepageComponent implements OnInit {
   employeeList: any[];
   displayedColumns: any[];
   mobile: boolean;
+
+  isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
+  expandedElement: any;
 
   @ViewChild(MatTable, { static: false }) table: MatTable<any>;
 
