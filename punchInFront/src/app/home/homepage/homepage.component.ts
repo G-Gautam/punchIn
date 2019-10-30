@@ -10,6 +10,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { AddEmployeeFormComponent } from '../forms/add-employee-form/add-employee-form.component';
 import { AddEditEmployeeDialogComponent } from '../dialogs/add-edit-employee-dialog/add-edit-employee-dialog.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { expand } from 'rxjs/operators';
 
 
 @Component({
@@ -18,8 +19,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   styleUrls: ['./homepage.component.css'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
-      state('expanded', style({ height: '*', visibility: 'visible' })),
+      state('collapsed', style({ height: '0px', minHeight: '0', display: 'none' })),
+      state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ]
@@ -34,9 +35,7 @@ export class HomepageComponent implements OnInit {
   employeeList: any[];
   displayedColumns: any[];
   mobile: boolean;
-
-  isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
-  expandedElement: any;
+  expandedDetail: any[];
 
   @ViewChild(MatTable, { static: false }) table: MatTable<any>;
 
@@ -79,7 +78,7 @@ export class HomepageComponent implements OnInit {
     if (window.screen.width < 768) {
       dialogConfig.width = "100%";
     }
-    else{
+    else {
       dialogConfig.width = "50%";
     }
     dialogConfig.backdropClass = 'backdrop';
@@ -94,14 +93,14 @@ export class HomepageComponent implements OnInit {
     });
   }
 
-  editEmployee(employee){
+  editEmployee(employee) {
     var dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.height = "50%";
     if (window.screen.width < 768) {
       dialogConfig.width = "100%";
     }
-    else{
+    else {
       dialogConfig.width = "50%";
     }
     dialogConfig.backdropClass = 'backdrop';
@@ -142,12 +141,12 @@ export class HomepageComponent implements OnInit {
     })
   }
 
-  dummy(event){
+  dummy(event) {
     console.log(event);
   }
 
-  remove(employee){
-    if(confirm("Are you sure you want to delete " + employee.name)){
+  remove(employee) {
+    if (confirm("Are you sure you want to delete " + employee.name)) {
       this.employeeService.removeEmployee(employee._id).subscribe((data: any) => {
         this.employeeList = [];
         this.table.renderRows();
@@ -160,7 +159,7 @@ export class HomepageComponent implements OnInit {
         this.snackBar.open('Employee ' + employee.name + ' deleted successfully', null, config);
       })
     }
-    else{
+    else {
       return;
     }
   }
