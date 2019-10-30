@@ -134,6 +134,8 @@ export class HomepageComponent implements OnInit {
       this.table.renderRows();
       data.forEach(element => {
         let salary = element.salary.toFixed(2);
+        let date = element.startDate.split("T")[0];
+        element.startDate = date;
         element.salary = salary;
         this.employeeList.push(element);
         this.table.renderRows();

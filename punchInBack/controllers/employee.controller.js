@@ -21,7 +21,8 @@ exports.Add = function (req, res) {
         {
             name: req.body.name,
             salary: req.body.salary,
-            company: req.body.company
+            company: req.body.company,
+            startDate: new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate())
         })
     userModel.find({ 'companyCode': { $eq: employee.company } }).sort().then(eachOne => {
         if (eachOne.length !== 0) {
