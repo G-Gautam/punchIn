@@ -2,6 +2,7 @@ const employeeModel = require('../models/employee.model');
 const userModel = require('../models/user.model');
 
 exports.GetAll = function (req, res) {
+    console.log("Here")
     employeeModel.find().sort().then(eachOne => {
         res.json(eachOne);
     })
@@ -12,6 +13,7 @@ exports.Get = function (req, res) {
     })
 }
 exports.GetByCode = function (req, res) {
+    console.log("Here")
     employeeModel.find({ 'company': { $eq: req.params.code } }).sort().then(eachOne => {
         res.json(eachOne);
     })

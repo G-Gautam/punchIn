@@ -17,7 +17,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: false}));
-server.use('/', user);
+server.use('/user', user);
 server.use('/employee', employee);
 
 let port = 8081;

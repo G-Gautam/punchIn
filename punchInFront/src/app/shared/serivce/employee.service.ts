@@ -15,7 +15,7 @@ export class EmployeeService {
 
   
   getEmployees(code: string){
-    return this.httpClient.get(this.url + '/'+ code);
+    return this.httpClient.get(this.url + '/code/'+ code);
   }
 
   addEmployee(name: string, salary: string, company: string){
